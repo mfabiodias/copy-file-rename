@@ -1,8 +1,10 @@
 const scandir  = require('scandir').create();
 const fileCopy = require('fs-copy-file-sync');
-const fs = require("fs")
+const fs = require("fs");
+const os = require("os");
 const oFolder  = "pdf_origem";  
-const dFolder  = "pdf_destino";  
+const dFolder  = "pdf_destino"; 
+const osBar    = os.platform() == "win32" ? "\\" : "/";  
 
 // Executa na leitura de cada arquivo retornado
 scandir.on('file', (file, stats) => {
@@ -15,8 +17,8 @@ scandir.on('file', (file, stats) => {
         }
     })
 
-    const gfile = file.split("/")[1].split(".");
-    const ofile = dFolder+"/"+removeAcentos(gfile[0])+"."+gfile[1];
+    const gfile = file.split(osBar)[1].split(".");
+    const ofile = dFolder+osBar+removeAcentos(gfile[0])+"."+gfile[1];
     
     fileCopy(
         file, // path/file.ext
