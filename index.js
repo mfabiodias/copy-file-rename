@@ -4,26 +4,36 @@ const fs = require("fs");
 const os = require("os");
 const oFolder  = "pdf_origem";  
 const dFolder  = "pdf_destino"; 
-const osBar    = os.platform() == "win32" ? "\\" : "/";  
+const osBar    = os.platform() == "win32" ? "\\" : "/"; 
+const debug    = false; 
 
 // Executa na leitura de cada arquivo retornado
 scandir.on('file', (file, stats) => {
 
-    fs.mkdir(dFolder, function(err) {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log("New directory successfully created.")
-        }
-    })
-
-    const gfile = file.split(osBar)[1].split(".");
-    const ofile = dFolder+osBar+removeAcentos(gfile[0])+"."+gfile[1];
+    const parts = file.split(osBar)[1].split(".");
+    const ext   = parts.pop();
+    const nFile = parts.join(" ");
+    const ofile = dFolder+osBar+removeAcentos(nFile)+"."+ext;
     
-    fileCopy(
-        file, // path/file.ext
-        ofile // renomeia pasta de origem/destino
-    );
+    if(debug) {
+        console.log(`De: ${file}`)
+        console.log(`Para: ${ofile}`)
+    }
+    
+    try {
+        if (!fs.existsSync(dFolder)) {
+            fs.mkdirSync(dFolder, function(err) {
+                if (err) {
+                    console.log(err)
+                } 
+            });
+        }
+    } catch(err) {
+        console.error(err)
+    } finally {
+        fileCopy(file, ofile);
+    }
+
 });
 
 // Imprime error se houver
