@@ -5,7 +5,7 @@ const os = require("os");
 const oFolder  = "pdf_origem";  
 const dFolder  = "pdf_destino"; 
 const osBar    = os.platform() == "win32" ? "\\" : "/"; 
-const debug    = false; 
+const debug    = true; 
 
 // Executa na leitura de cada arquivo retornado
 scandir.on('file', (file, stats) => {
@@ -16,8 +16,7 @@ scandir.on('file', (file, stats) => {
     const ofile = dFolder+osBar+removeAcentos(nFile)+"."+ext;
     
     if(debug) {
-        console.log(`De: ${file}`)
-        console.log(`Para: ${ofile}`)
+        console.log(`De: ${file} - Para: ${ofile}`);
     }
     
     try {
