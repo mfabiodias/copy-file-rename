@@ -41,17 +41,17 @@ scandir.on('file', (file, stats) => {
 
 });
 
-// Imprime error se houver
+// Imprime error na leitura do arquivo se falhar
 scandir.on('error', err => console.log(err));
 
-// Executado na conclusão de leitura da lista de arquivos
+// Executado na conclusão de leitura da lista dos arquivos
 scandir.on('end', _ => {
     // Stop no tempo de contagem
     const results = perf.stop();
     console.log(`\nConcluído! ${contador} arquivo(s) renomeados em ${(results.time/1000).toFixed(2)} segundos(s).`)
 });
 
-// Função que percorre o diretório en busca de arquivos
+// Função que percorre o diretório em busca de arquivos
 scandir.scan({
     dir: `./${oFolder}`,
     recursive: true,
