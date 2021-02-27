@@ -1,7 +1,7 @@
 const scandir  = require('scandir').create();
 const fileCopy = require('fs-copy-file-sync');
-const fs = require("fs");
-const os = require("os");
+const fs       = require("fs");
+const os       = require("os");
 const oFolder  = "pdf_origem";  
 const dFolder  = "pdf_destino"; 
 const osBar    = os.platform() == "win32" ? "\\" : "/"; 
