@@ -62,7 +62,7 @@ scandir.scan({
 const removeAcentos = str => str.normalize('NFD')
     .replace(/[\u0300-\u036f]/g, "")
     .replace("_", " ")
-    .replace(/\s\s+/g, ' ')
-    .replace(/--+/g, '-')
+    .replace(/\s+/g, ' ')
+    .replace(/-+/g, '-')
     .replace(/[^a-z0-9-\s]/gi,'')
     .toLowerCase().replace(/(?<= )[^\s]|^./g, a=>a.toUpperCase());
