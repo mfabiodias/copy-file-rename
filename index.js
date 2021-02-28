@@ -48,7 +48,7 @@ scandir.on('error', err => console.log(err));
 scandir.on('end', _ => {
     // Stop no tempo de contagem
     const results = perf.stop();
-    console.log(`\nConcluído! ${contador} arquivo(s) renomeados em ${(results.time/1000).toFixed(2)} segundos(s).`)
+    console.log(`\nConcluído! ${contador} arquivo(s) renomeados em ${(results.time/1000).toFixed(2)} segundo(s).`)
 });
 
 // Função que percorre o diretório em busca de arquivos
