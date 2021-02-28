@@ -58,7 +58,7 @@ scandir.scan({
     filter: /.*/
 });
 
-// Remove acentuação 
+// Remove acentuação e formata o nome capitalizando primeira letra de cada palavra 
 const removeAcentos = str => str.normalize('NFD')
     .replace(/[\u0300-\u036f]/g, "")
     .replace("_", " ")
