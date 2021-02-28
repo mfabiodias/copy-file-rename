@@ -18,10 +18,10 @@ scandir.on('file', (file, stats) => {
     const parts = file.split(osBar)[1].split(".");
     const ext   = parts.pop();
     const nFile = parts.join(" ");
-    const ofile = dFolder+osBar+removeAcentos(nFile)+"."+ext;
+    const oFile = dFolder+osBar+removeAcentos(nFile)+"."+ext;
     
     if(debug) {
-        console.log(`De: ${file} - Para: ${ofile}`);
+        console.log(`De: ${file} - Para: ${oFile}`);
     }
     
     try {
@@ -36,7 +36,7 @@ scandir.on('file', (file, stats) => {
         console.error(err)
     } finally {
         contador++;
-        fileCopy(file, ofile);
+        fileCopy(file, oFile);
     }
 
 });
