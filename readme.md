@@ -7,5 +7,5 @@
 
 1. Faça o download ou fork deste repositório;
 2. Rode o comando <b><i>git install</i></b> para baixar as dependencias
-3. Renomeie as variaveis "oFolder" e "dFolder" do arquivo "renameFile.js" com as pastas de origem e destino dos seus arquivos para copia-los e remover a centuação das cópias.
-4. Execute o arquivo "renameFile.js"
+3. Renomeie as variaveis "oFolder" e "dFolder" do arquivo "index.js" com as pastas de origem e destino dos seus arquivos para copia-los e remover a centuação das cópias.
+4. Execute o arquivo com "node index.js" ou "npm start"
